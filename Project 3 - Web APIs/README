@@ -1,0 +1,51 @@
+README.txt
+
+Project 3 - Web APIs
+
+Name:	   Tolgahan Vahaplar
+B-Number:  B00512769
+Email:     tvahapl1@binghamton.edu
+
+Program Explanation:
+
+A ruby program that consists of 6 files, which are:
+	
+- APIProxy.rb		(API base class)
+- RandomUserProxy.rb 	(Proxy class for Random User API)
+- PetDetectionProxy.rb	(Proxy class for Petfinder API)
+- RecommendGifProxy.rb	(Proxy class for Giphy API)
+- Log.rb		(Logging class)
+- main.rb		(Main class)
+
+The program also benefits of 3 design patterns:
+	
+- Proxy
+- Singleton
+- Decorator
+
+Proxy Pattern acts like a placeholder to control access to another object. In this case, our proxy classes acts like a chokepoint
+for the information that is received from Web API's. The API base class holds shared connection details and provide Proxy subclasses 
+the abstract methods, while three Proxy class hold API specific information (e.g. uri) and implementation.
+
+Decorator Pattern helps to manage the chain between API's. The output value from one API can be used to seed the next API, and at the
+end of the chain the final object can complete the request by logging.
+
+Singleton Pattern is used to log or show the information from the objects in real time, without affecting the execution of the code. 
+
+
+Program Flow and Exceptions:
+
+- Random User API provides a location information (State) 
+	- A default state could be thrown as fallback method in RandomUserProxy.rb
+- State information used as a seed for Petfinder API
+- Petfinder API provides a random dog breed.
+	- A default breed could be thrown as fallback method in PetDetectionProxy.rb
+- The breed information used as a seed for Giphy API
+- Giphy API provides the id of a random GIF file
+- This id is used to create embed link for the GIF
+	- This is because API doesn't provide an embed link itself, and other URL's are protected with HTTPS
+- Logging is done by Log method in Log.rb, which uses singleton pattern
+- The actual log is represented as an HTML file, which is populated with the embed link from the last proxy object.
+	- A local GIF file (/gif/dog.gif) could be thrown as fallback method in RecommendGifProxy.rb
+- If the chain successful, opening HTML file will show the embed GIF
+- DISCLAIMER: GIF's are totally random, so beware any "Not Safe For Work" content!
