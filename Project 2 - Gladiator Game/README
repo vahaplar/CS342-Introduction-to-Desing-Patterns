@@ -1,0 +1,17 @@
+README.txt
+
+Project 2 - Gladiator Game
+
+Name:	   Tolgahan Vahaplar
+B-Number:  B00512769
+Email:     tvahapl1@binghamton.edu
+
+Program Explanation:
+
+A ruby program that benefits of the patterns:
+	
+- Template
+- Observer
+- Strategy
+
+A simple game which involves basic character creation, attribute selection, AI and luck aspects. 
